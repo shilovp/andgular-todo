@@ -1,0 +1,14 @@
+header {
+    height: 7vh;
+    background-color: aliceblue;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 2rem;
+}
+main {
+    margin-inline: auto;
+    width: min(90%, 70.5rem);
+    height: 90vh;
+}

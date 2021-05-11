@@ -1,0 +1,113 @@
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 90vh;
+}
+
+.login-form-layout {
+    background: aliceblue;
+    border-radius: 7px;
+    box-shadow: 0 4.5px 5px 0 rgba(0, 0, 0, 0.1);
+    width: 450px;
+    display: flex;
+    flex-direction: column;
+}
+
+.login-form-header {
+    text-align: center;
+    padding: 20px 20px 0;
+    margin: 0;
+}
+
+.login-fields {
+    color: #ffff;
+    padding: 25px 25px 0;
+    margin: 20px 20px 0;
+}
+
+input {
+    border: 0;
+    color: inherit;
+    font: inherit;
+    margin: 0;
+    outline: 0;
+    padding: 0;
+    -webkit-transition: background-color 0.3s;
+    transition: background-color 0.3s;
+}
+
+.form input[type="password"],
+.form input[type="email"],
+.form input[type="submit"] {
+    width: 100%;
+}
+
+.form-login label,
+.form-login input[type="email"],
+.form-login input[type="password"],
+.form-login input[type="submit"] {
+    border-radius: 0.25rem;
+    padding: 1rem;
+    color: #3a3f44;
+}
+
+.form-login label {
+    background-color: lightseagreen;
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+}
+
+.form-login input[type="email"],
+.form-login input[type="password"] {
+    background-color: #ffffff;
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+}
+.form-login input[type="email"]:focus,
+.form-login input[type="email"]:hover,
+.form-login input[type="password"]:focus,
+.form-login input[type="password"]:hover {
+    background-color: #eeeeee;
+}
+.form-login input[type="submit"] {
+    background-color: lemonchiffon;
+    color: #3a3f44;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-weight: 900;
+}
+.form-login input[type="submit"]:focus,
+.form-login input[type="submit"]:hover {
+    background-color: lightgreen;
+}
+.form-field {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    margin-bottom: 2rem;
+}
+
+.form-field .register-link {
+    color: darkcyan;
+    text-decoration: none;
+}
+
+.hidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+.text--center {
+    text-align: center;
+}

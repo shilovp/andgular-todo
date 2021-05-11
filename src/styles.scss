@@ -1,1 +1,39 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+    --ff-primary: "Roboto", sans-serif;
+    --fc-primary: rgb(56, 52, 52);
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--ff-primary);
+    font-weight: 400;
+    line-height: 1.6;
+    width: 100vw;
+    max-width: 100%;
+    min-height: 100vh;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+label {
+    font-size: clamp(1rem, 2vw, 2rem);
+    color: var(--fc-primary);
+    margin: 0;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
