@@ -13,7 +13,10 @@ export class TodoService {
     let todosDb = this.db.collection('todos');
     return todosDb.add(todo);
   }
-  updateTodo() { }
+  updateTodo(todo: TodoItem) {
+    let todosDb = this.db.collection('todos');
+    return todosDb.doc(todo.id).update(todo);
+  }
 
   getTodos() {
     let todosDb = this.db.collection('todos');

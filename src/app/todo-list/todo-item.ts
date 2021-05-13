@@ -4,11 +4,10 @@ export interface TodoItem {
     description: string;
     date: Date;
 
-    id: string | null;
+    id: string | undefined;
 }
 
 export enum Status {
     Active = 1,
-    Planned = 2,
-    Done = 3
+    Done = 2
 }

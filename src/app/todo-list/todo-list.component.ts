@@ -17,18 +17,13 @@ export class TodoListComponent implements OnInit {
   }
 
   todos: TodoItem[] = [];
-
-  testItem = {
-    date: new Date(),
-    title: "Test name",
-    description: "This is test task hey hey hey hey",
-  }
+  completedTodos: TodoItem[] = [];
 
   newItem: TodoItem = {
     date: new Date(),
     description: '',
     title: '',
-    id: null,
+    id: undefined,
     status: Status.Active
   };
 
@@ -44,12 +39,14 @@ export class TodoListComponent implements OnInit {
 
   getTodos() {
     this.todos = [];
+    this.completedTodos = [];
     this._servive.getTodos().subscribe(snapshot => {
       snapshot.forEach(doc => {
         let data = <TodoItem>doc.data();
         let todo = { id: doc.id, title: data.title, description: data.description, date: data.date, status: data.status }
 
-        this.todos.push(todo);
+        todo.status === Status.Active ? this.todos.push(todo) : this.completedTodos.push(todo);
+
       });
     });
   }
@@ -62,6 +59,13 @@ export class TodoListComponent implements OnInit {
     this._servive.addTodo(this.newItem).then(resp => {
       this.getTodos();
       this.adding = false;
+    });
+  }
+
+  markTodoAsDone(todo: TodoItem) {
+    todo.status = Status.Done;
+    this._servive.updateTodo(todo).then(resp => {
+      this.getTodos();
     });
   }
 

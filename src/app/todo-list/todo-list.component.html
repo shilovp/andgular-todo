@@ -32,7 +32,7 @@
                 <div class="item-date">{{todo.date | date}}</div>
                 <div class="item-title">{{todo.title}}</div>
                 <div class="item-description">{{todo.description}}</div>
-                <div class="item-action"><span title="DONE">👍</span></div>
+                <div class="item-action"><span title="DONE" (click)="markTodoAsDone(todo)">👍</span></div>
             </div>
         </div>
     </div>
