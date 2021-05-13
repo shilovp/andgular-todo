@@ -1,1 +1,39 @@
-<p>register works!</p>
+<section>
+    <div class="login-container">
+        <div class="login-form-layout">
+            <div class="login-form-header">
+                <h3>Register new account</h3>
+            </div>
+            <div class="login-fields">
+                <form name="register-form" class="form form-login">
+                    <div class="form-field">
+                        <label class="user" for="login-username"><span class="hidden">EMAIL</span></label>
+                        <input name="email" id="login-username" type="email" class="form-input" placeholder="EMAIL" required [(ngModel)]="email">
+                    </div>
+
+                    <div class="form-field">
+                        <label class="user" for="login-username"><span class="hidden">EMAIL</span></label>
+                        <input id="login-username" type="email" class="form-input" placeholder="REPEAT EMAIL" required>
+                    </div>
+
+                    <div class="form-field">
+                        <label class="lock" for="login-password"><span class="hidden">Password</span></label>
+                        <input name="password" id="login-password" type="password" class="form-input" placeholder="PASSWORD" required [(ngModel)]="password">
+                    </div>
+
+                    <div class="form-field">
+                        <label class="lock" for="login-password"><span class="hidden">Password</span></label>
+                        <input id="login-password" type="password" class="form-input" placeholder="REPEAT PASSWORD" required>
+                    </div>
+
+                    <div class="form-field">
+                        <input type="submit" value="Register" (click)="register()">
+                    </div>
+                    <div class="form-field">
+                        <a routerLink="/login" class="register-link">login</a>
+                    </div>  
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

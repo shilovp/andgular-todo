@@ -4,9 +4,20 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-
+    color: darkcyan;
+    font-weight: 700;
     padding: 2rem;
 }
+
+.header-logout{
+    display: flex;
+    gap: 20px;
+}
+
+.header-logout :nth-child(2) {
+    cursor: pointer;
+}
+
 main {
     margin-inline: auto;
     width: min(90%, 70.5rem);

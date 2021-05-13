@@ -5,22 +5,22 @@
                 <h3>Login to your TODO list</h3>
             </div>
             <div class="login-fields">
-                <form action="" method="post" class="form form-login">
+                <form name="login-form" class="form form-login">
                     <div class="form-field">
                         <label class="user" for="login-username"><span class="hidden">Username</span></label>
-                        <input id="login-username" type="email" class="form-input" placeholder="Username" required>
+                        <input name="email" id="login-username" type="email" class="form-input" placeholder="EMAIL" [(ngModel)]="email" required>
                     </div>
 
                     <div class="form-field">
                         <label class="lock" for="login-password"><span class="hidden">Password</span></label>
-                        <input id="login-password" type="password" class="form-input" placeholder="Password" required>
+                        <input name="password" id="login-password" type="password" class="form-input" placeholder="PASSWORD" [(ngModel)]="password" required>
                     </div>
 
                     <div class="form-field">
-                        <input type="submit" value="Log in">
+                        <input type="submit" value="Log in" (click)="login()">
                     </div>
                     <div class="form-field">
-                        <a href="#" class="register-link">Register</a>
+                        <a routerLink="/register" class="register-link">Register</a>
                     </div>
                 </form>
             </div>

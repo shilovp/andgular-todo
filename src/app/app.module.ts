@@ -12,6 +12,8 @@ import { RegisterComponent } from './register/register.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AuthState } from './shared/state/user.state';
+import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
 
 const firebaseConfig = {
   apiKey: "AIzaSyB0XGJRmHfhQgMBENMchB09vTeAOQu8VW8",
@@ -33,8 +35,9 @@ const firebaseConfig = {
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    NgxsModule.forRoot([], {
-      developmentMode: false
+    NgxsModule.forRoot([AuthState]),
+    NgxsStoragePluginModule.forRoot({
+      key: 'auth.username'
     }),
     AngularFireModule.initializeApp(firebaseConfig),
     BrowserAnimationsModule,
