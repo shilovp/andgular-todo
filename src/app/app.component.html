@@ -1,8 +1,11 @@
 <header>
-   <div class="header-title">
-       TODO LIST
-   </div>
-   <div class="header-logout" (click)="logout()">Logout</div>
+    <div class="header-title">
+        TODO LIST
+    </div>
+    <div class="header-logout" *ngIf="_authService.isUserAuthenticated()">
+        <div>{{_authService.getUsername()}}</div>
+        <div (click)="logout()">Logout</div>
+    </div>
 </header>
 <main>
     <router-outlet></router-outlet>

@@ -7,25 +7,19 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  user: any;
-  private authState: Observable<any>;
-  isAuthorized = false;
-  userData: any;
 
-  email: string = '';
-  password: string = '';
+  email: string | null = "";
+  password: string | null = "";
+  isAuthorized = false;
 
 
   constructor(public afAuth: AngularFireAuth, public router: Router, public ngZone: NgZone) {
-    this.user = afAuth.authState;
-    this.authState = this.afAuth.authState;
-
     this.afAuth.authState.subscribe(user => {
       if (user) {
-        this.userData = user;
-        localStorage.setItem('user', JSON.stringify(this.userData));
+        this.email = user.email;
+        this.isAuthorized = true;
       } else {
-        localStorage.setItem('user', '');
+        this.isAuthorized = false;
       }
     })
   }
@@ -36,13 +30,20 @@ export class AuthService {
 
   logout() {
     return this.afAuth.signOut().then(resp => {
-      this.user = null;
+      this.isAuthorized = false;
       this.router.navigate(['login']);
     })
   }
 
-
   login(email: string, password: string) {
     return this.afAuth.signInWithEmailAndPassword(email, password);
+  }
+
+  getUsername() {
+    return this.email;
+  }
+
+  isUserAuthenticated() {
+    return this.isAuthorized;
   }
 }
