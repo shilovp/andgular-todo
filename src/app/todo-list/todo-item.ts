@@ -4,7 +4,7 @@ export interface TodoItem {
     description: string;
     date: Date;
 
-    id: string | undefined;
+    id: string | null;
 }
 
 export enum Status {

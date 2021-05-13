@@ -15,6 +15,7 @@ export class TodoService {
   }
   updateTodo(todo: TodoItem) {
     let todosDb = this.db.collection('todos');
+    if (!todo.id) {todo.id = ""}
     return todosDb.doc(todo.id).update(todo);
   }
 

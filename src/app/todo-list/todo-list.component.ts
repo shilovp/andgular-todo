@@ -23,7 +23,7 @@ export class TodoListComponent implements OnInit {
     date: new Date(),
     description: '',
     title: '',
-    id: undefined,
+    id: null,
     status: Status.Active
   };
 
