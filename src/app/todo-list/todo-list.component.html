@@ -1,1 +1,34 @@
-<p>todo-list works!</p>
+<section>
+    <div class="todo-list-container">
+        <div class="todo-list-add-new">
+            <span title="ADD TODO" (click)="addNewItem()">📑</span>
+        </div>
+        <div class="todo-list-header">
+            <div class="filter">
+                <h4 (click)="updateFilter('name')">NAME <span *ngIf="filter.direction === 'down'">↓</span><span
+                        *ngIf="filter.direction === 'up'">↑</span></h4>
+                <h4 (click)="updateFilter('date')">DATE <span *ngIf="filter.direction === 'down'">↓</span><span
+                        *ngIf="filter.direction === 'up'">↑</span></h4>
+            </div>
+            <div></div>
+            <div>
+                <input type="text" placeholder="search" />
+            </div>
+        </div>
+        <div class="todo-items">
+            <div class="todo-item add" *ngIf="adding"></div>
+            <div class="todo-item">
+                <div class="item-date">{{testItem.date | date}}</div>
+                <div class="item-title">{{testItem.title}}</div>
+                <div class="item-description">{{testItem.description}}</div>
+                <div class="item-action"><span title="DONE">👍</span></div>
+            </div>
+            <div class="todo-item">
+                <div class="item-date">{{testItem.date | date}}</div>
+                <div class="item-title">{{testItem.title}}</div>
+                <div class="item-description">{{testItem.description}}</div>
+                <div class="item-action"><span title="DONE">👍</span></div>
+            </div>
+        </div>
+    </div>
+</section>
