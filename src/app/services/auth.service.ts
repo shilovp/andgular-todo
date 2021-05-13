@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  user: Observable<any>;
+  user: any;
   private authState: Observable<any>;
   isAuthorized = false;
   userData: any;
@@ -30,33 +30,19 @@ export class AuthService {
     })
   }
 
+  registerUser(email: string, password: string) {
+    return this.afAuth.createUserWithEmailAndPassword(email, password);
+  }
 
-  SignIn(email: string, password: string) {
-    return this.afAuth.signInWithEmailAndPassword(email, password)
-      .then((result) => {
-        this.email = email;
-        this.password = password;
-        setTimeout(() => {
-          this.ngZone.run(() => {
-            this.router.navigate(['todolist']);
-          });
-        }, 1);
-      }).catch((error) => {
-        window.alert(error.message)
-      })
+  logout() {
+    return this.afAuth.signOut().then(resp => {
+      this.user = null;
+      this.router.navigate(['login']);
+    })
   }
 
 
-  get isLoggedIn(): boolean {
-    const user = JSON.parse(localStorage.getItem('user'));
-    return user !== null ? true : false;
-  }
-
-  get uEmail(): string {
-    return this.email;
-  }
-
-  get uPassword(): string {
-    return this.password;
+  login(email: string, password: string) {
+    return this.afAuth.signInWithEmailAndPassword(email, password);
   }
 }
