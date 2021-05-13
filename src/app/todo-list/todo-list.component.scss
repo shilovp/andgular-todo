@@ -80,6 +80,12 @@
     }
 }
 
+.todo-item {
+    input {
+        width: 100%;
+    }
+}
+
 @media (max-width: 40em) {
     .todo-item {
         flex-direction: column;

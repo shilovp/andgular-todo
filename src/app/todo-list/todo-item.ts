@@ -3,6 +3,8 @@ export interface TodoItem {
     status: Status;
     description: string;
     date: Date;
+
+    id: string | null;
 }
 
 export enum Status {

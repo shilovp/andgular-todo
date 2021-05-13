@@ -16,17 +16,22 @@
             </div>
         </div>
         <div class="todo-items">
-            <div class="todo-item add" *ngIf="adding"></div>
-            <div class="todo-item">
-                <div class="item-date">{{testItem.date | date}}</div>
-                <div class="item-title">{{testItem.title}}</div>
-                <div class="item-description">{{testItem.description}}</div>
-                <div class="item-action"><span title="DONE">👍</span></div>
+            <div class="todo-item add" *ngIf="adding">
+                <div class="item-date">
+                    <input type="date" [(ngModel)]="newItem.date" placeholder="date">
+                </div>
+                <div class="item-title">
+                    <input type="text" [(ngModel)]="newItem.title" placeholder="title">
+                </div>
+                <div class="item-description">
+                    <input type="text" [(ngModel)]="newItem.description" placeholder="description">
+                </div>
+                <div class="item-action"><span title="ADD" (click)="addNewTodoItem()">👌</span></div>
             </div>
-            <div class="todo-item">
-                <div class="item-date">{{testItem.date | date}}</div>
-                <div class="item-title">{{testItem.title}}</div>
-                <div class="item-description">{{testItem.description}}</div>
+            <div class="todo-item" *ngFor="let todo of todos">
+                <div class="item-date">{{todo.date | date}}</div>
+                <div class="item-title">{{todo.title}}</div>
+                <div class="item-description">{{todo.description}}</div>
                 <div class="item-action"><span title="DONE">👍</span></div>
             </div>
         </div>
