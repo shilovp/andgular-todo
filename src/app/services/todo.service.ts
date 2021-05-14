@@ -26,6 +26,7 @@ export class TodoService {
       sortField = 'date';
       sortDirection = 'desc';
     }
+    console.log('first: ', this._authService.getUsername());
     return todosDb.ref.orderBy(sortField, sortDirection).where('userId', '==', this._authService.getUsername());
   }
 }
