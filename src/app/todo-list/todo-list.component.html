@@ -40,7 +40,6 @@
                 <a class="completed-link" *ngIf="!completed" (click)="showCompleted()">Show completed</a>
                 <a class="completed-link" *ngIf="completed" (click)="showCompleted()">Hide completed</a>
             </div>
-            <hr />
             <div *ngIf="completed">
                 <div class="todo-item completed" *ngFor="let todo of completedTodos">
                     <div class="item-date">{{todo.date | date}}</div>
