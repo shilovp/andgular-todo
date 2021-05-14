@@ -34,9 +34,22 @@
                 <div class="item-date">{{todo.date | date}}</div>
                 <div class="item-title">{{todo.title}}</div>
                 <div class="item-description">{{todo.description}}</div>
-                <div class="item-action"><span title="DONE" (click)="markTodoAsDone(todo)">👍</span></div>
+                <div class="item-action"><span title="DONE" (click)="changeTodoStatus(todo)">👍</span></div>
             </div>
-            <div class="" *ngIf="false"><button>Completed</button></div>
+            <div class="completed-actions">
+                <a class="completed-link" *ngIf="!completed" (click)="showCompleted()">Show completed</a>
+                <a class="completed-link" *ngIf="completed" (click)="showCompleted()">Hide completed</a>
+            </div>
+            <hr />
+            <div *ngIf="completed">
+                <div class="todo-item completed" *ngFor="let todo of completedTodos">
+                    <div class="item-date">{{todo.date | date}}</div>
+                    <div class="item-title">{{todo.title}}</div>
+                    <div class="item-description">{{todo.description}}</div>
+                    <div class="item-action"><span title="DONE" (click)="changeTodoStatus(todo)">👎</span></div>
+                </div>
+            </div>
+
         </div>
     </div>
 </section>

@@ -10,6 +10,8 @@ import { Status, TodoItem } from './todo-item';
 export class TodoListComponent implements OnInit {
 
   adding = false;
+  completed = false;
+
   filter = {
     isSet: false,
     option: 'date', // title | date
@@ -48,7 +50,6 @@ export class TodoListComponent implements OnInit {
         let todo = { id: doc.id, title: data.title, description: data.description, date: data.date, status: data.status }
 
         todo.status === Status.Active ? this.todos.push(todo) : this.completedTodos.push(todo);
-
       });
     });
   }
@@ -72,11 +73,15 @@ export class TodoListComponent implements OnInit {
     });
   }
 
-  markTodoAsDone(todo: TodoItem) {
-    todo.status = Status.Done;
+  changeTodoStatus(todo: TodoItem) {
+    todo.status === Status.Active ? todo.status = Status.Done : todo.status = Status.Active;
     this._servive.updateTodo(todo).then(resp => {
       this.getTodos();
     });
+  }
+
+  showCompleted() {
+    this.completed = !this.completed;
   }
 
 }
