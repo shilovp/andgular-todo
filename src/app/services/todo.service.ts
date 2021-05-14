@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { TodoItem } from '../todo-list/todo-item';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TodoService {
 
-  constructor(private db: AngularFirestore) { }
+  constructor(private db: AngularFirestore, private _authService: AuthService) { }
 
   addTodo(todo: TodoItem) {
     let todosDb = this.db.collection('todos');
@@ -25,6 +26,6 @@ export class TodoService {
       sortField = 'date';
       sortDirection = 'desc';
     }
-    return todosDb.ref.orderBy(sortField, sortDirection).get();
+    return todosDb.ref.orderBy(sortField, sortDirection).where('userId', '==', this._authService.getUsername());
   }
 }

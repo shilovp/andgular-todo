@@ -5,6 +5,7 @@ export interface TodoItem {
     date: Date;
 
     id: string | null;
+    userId: string | null;
 }
 
 export enum Status {

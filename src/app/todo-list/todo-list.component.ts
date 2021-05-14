@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../services/auth.service';
 import { TodoService } from '../services/todo.service';
 import { Status, TodoItem } from './todo-item';
 
@@ -26,10 +27,11 @@ export class TodoListComponent implements OnInit {
     description: '',
     title: '',
     id: null,
-    status: Status.Active
+    status: Status.Active,
+    userId: ""
   };
 
-  constructor(private _servive: TodoService) { }
+  constructor(private _servive: TodoService, private _authService: AuthService) { }
 
   ngOnInit(): void {
     this.getTodos();
@@ -42,12 +44,13 @@ export class TodoListComponent implements OnInit {
   }
 
   getTodos() {
+    console.log('email! ', this._authService.getUsername());
     this.todos = [];
     this.completedTodos = [];
-    this._servive.getTodos(this.filter.option, this.filter.direction).then(snapshot => {
+    this._servive.getTodos(this.filter.option, this.filter.direction).onSnapshot(snapshot => {
       snapshot.forEach(doc => {
         let data = <TodoItem>doc.data();
-        let todo = { id: doc.id, title: data.title, description: data.description, date: data.date, status: data.status }
+        let todo = { id: doc.id, title: data.title, description: data.description, date: data.date, status: data.status, userId: data.userId }
 
         todo.status === Status.Active ? this.todos.push(todo) : this.completedTodos.push(todo);
       });
@@ -59,6 +62,7 @@ export class TodoListComponent implements OnInit {
   }
 
   addNewTodoItem() {
+    this.newItem.userId = this._authService.getUsername();
     this._servive.addTodo(this.newItem).then(resp => {
       this.getTodos();
       this.adding = false;
@@ -68,7 +72,8 @@ export class TodoListComponent implements OnInit {
         description: '',
         title: '',
         id: null,
-        status: Status.Active
+        status: Status.Active,
+        userId: ""
       };
     });
   }
