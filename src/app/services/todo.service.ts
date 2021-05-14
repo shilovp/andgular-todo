@@ -20,13 +20,16 @@ export class TodoService {
     return todosDb.doc(todo.id).update(todo);
   }
 
-  getTodos(sortField: any, sortDirection: any) {
+  getTodos(sortField: any, sortDirection: any, searchQuery?: string) {
     let todosDb = this.db.collection('todos');
     if (!sortField || !sortDirection) {
       sortField = 'date';
       sortDirection = 'desc';
     }
-    console.log('first: ', this._authService.getUsername());
-    return todosDb.ref.orderBy(sortField, sortDirection).where('userId', '==', this._authService.getUsername());
+    let query = todosDb.ref.orderBy(sortField, sortDirection).where('userId', '==', this._authService.getUsername());
+    if (searchQuery) {
+      query = query.where('title', '==', searchQuery)
+    }
+    return query;
   }
 }

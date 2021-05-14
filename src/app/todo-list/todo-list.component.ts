@@ -19,6 +19,8 @@ export class TodoListComponent implements OnInit {
     direction: 'desc' // desc | ask
   }
 
+  searchQuery: string = '';
+
   todos: TodoItem[] = [];
   completedTodos: TodoItem[] = [];
 
@@ -44,10 +46,9 @@ export class TodoListComponent implements OnInit {
   }
 
   getTodos() {
-    console.log('email! ', this._authService.getUsername());
     this.todos = [];
     this.completedTodos = [];
-    this._servive.getTodos(this.filter.option, this.filter.direction).onSnapshot(snapshot => {
+    this._servive.getTodos(this.filter.option, this.filter.direction, this.searchQuery).onSnapshot(snapshot => {
       snapshot.forEach(doc => {
         let data = <TodoItem>doc.data();
         let todo = { id: doc.id, title: data.title, description: data.description, date: data.date, status: data.status, userId: data.userId }

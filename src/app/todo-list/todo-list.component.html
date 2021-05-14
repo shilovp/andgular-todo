@@ -14,7 +14,7 @@
             </div>
             <div></div>
             <div>
-                <input type="text" placeholder="search" />
+                <input type="text" placeholder="search" [(ngModel)]="searchQuery" (keyup.enter)="getTodos()" />
             </div>
         </div>
         <div class="todo-items">
