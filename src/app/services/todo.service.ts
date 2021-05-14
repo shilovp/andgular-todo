@@ -7,7 +7,7 @@ import { TodoItem } from '../todo-list/todo-item';
 })
 export class TodoService {
 
-  constructor(private db: AngularFirestore,) { }
+  constructor(private db: AngularFirestore) { }
 
   addTodo(todo: TodoItem) {
     let todosDb = this.db.collection('todos');
@@ -15,12 +15,16 @@ export class TodoService {
   }
   updateTodo(todo: TodoItem) {
     let todosDb = this.db.collection('todos');
-    if (!todo.id) {todo.id = ""}
+    if (!todo.id) { todo.id = "" }
     return todosDb.doc(todo.id).update(todo);
   }
 
-  getTodos() {
+  getTodos(sortField: any, sortDirection: any) {
     let todosDb = this.db.collection('todos');
-    return todosDb.get();
+    if (!sortField || !sortDirection) {
+      sortField = 'date';
+      sortDirection = 'desc';
+    }
+    return todosDb.ref.orderBy(sortField, sortDirection).get();
   }
 }

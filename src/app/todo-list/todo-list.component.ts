@@ -12,8 +12,8 @@ export class TodoListComponent implements OnInit {
   adding = false;
   filter = {
     isSet: false,
-    option: '', // name | date
-    direction: '' // up | down
+    option: 'date', // title | date
+    direction: 'desc' // desc | ask
   }
 
   todos: TodoItem[] = [];
@@ -34,13 +34,15 @@ export class TodoListComponent implements OnInit {
   }
 
   updateFilter(option: string) {
-
+    this.filter.option = option;
+    this.filter.direction === 'desc' ? this.filter.direction = 'asc' : this.filter.direction = 'desc';
+    this.getTodos();
   }
 
   getTodos() {
     this.todos = [];
     this.completedTodos = [];
-    this._servive.getTodos().subscribe(snapshot => {
+    this._servive.getTodos(this.filter.option, this.filter.direction).then(snapshot => {
       snapshot.forEach(doc => {
         let data = <TodoItem>doc.data();
         let todo = { id: doc.id, title: data.title, description: data.description, date: data.date, status: data.status }
@@ -59,6 +61,14 @@ export class TodoListComponent implements OnInit {
     this._servive.addTodo(this.newItem).then(resp => {
       this.getTodos();
       this.adding = false;
+
+      this.newItem = {
+        date: new Date(),
+        description: '',
+        title: '',
+        id: null,
+        status: Status.Active
+      };
     });
   }
 
