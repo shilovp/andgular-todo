@@ -14,7 +14,7 @@ export class AuthService {
 
 
   constructor(public afAuth: AngularFireAuth, public router: Router, public ngZone: NgZone) {
-    this.afAuth.authState.subscribe(user => {
+    this.afAuth.onAuthStateChanged(user => {
       if (user) {
         this.email = user.email;
         this.isAuthorized = true;

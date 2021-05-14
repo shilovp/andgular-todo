@@ -5,10 +5,10 @@ export interface TodoItem {
     date: Date;
 
     id: string | null;
+    userId: string | null;
 }
 
 export enum Status {
     Active = 1,
-    Planned = 2,
-    Done = 3
+    Done = 2
 }

@@ -67,10 +67,10 @@
     flex-basis: 15%;
 }
 .todo-item .item-description {
-    flex-basis: 70%;
+    flex-basis: 65%;
 }
 .todo-item .item-title {
-    flex-basis: 10%;
+    flex-basis: 15%;
 }
 .todo-item .item-action {
     flex-basis: 5%;
@@ -84,6 +84,26 @@
     input {
         width: 100%;
     }
+}
+
+.todo-item.completed {
+    border: 2px solid rgba(salmon, 0.479);
+}
+
+.todo-item.completed:hover {
+    border: 4px solid rgba(salmon,  0.336);
+}
+
+.completed-actions {
+    display: flex;
+    justify-content: flex-end;
+    padding: 1rem;
+}
+
+.completed-actions .completed-link {
+    color: salmon;
+    cursor: pointer;
+    font-weight: 700;
 }
 
 @media (max-width: 40em) {
