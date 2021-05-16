@@ -19,7 +19,6 @@ export class LoginComponent implements OnInit {
 
   login() {
     this._authService.login(this.email, this.password).then(resp => {
-      console.log('login success: ', resp);
       this._router.navigate(['todolist']);
     }).catch(err => {
       console.log('login err: ', err);
