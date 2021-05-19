@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -11,17 +12,14 @@ export class RegisterComponent implements OnInit {
   email: string = "";
   password: string = "";
 
-  constructor(private _authService: AuthService) { }
+  constructor(private _authService: AuthService, private _router: Router) { }
 
   ngOnInit(): void {
   }
 
   register() {
     this._authService.registerUser(this.email, this.password).then((userCredential) => {
-      var user = userCredential.user;
-      console.log('registered new user: ', user);
-
-      console.log('whole response: ', userCredential);
+      this._router.navigate(['todolist']);
     })
       .catch((error) => {
         var errorCode = error.code;
