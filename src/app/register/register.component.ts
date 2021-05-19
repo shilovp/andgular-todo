@@ -24,7 +24,7 @@ export class RegisterComponent implements OnInit {
       .catch((error) => {
         var errorCode = error.code;
         var errorMessage = error.message;
-        // ..
+        // can be used for error handling here
       });
   }
 
