@@ -16,7 +16,7 @@ export class TodoListComponent implements OnInit {
   filter = {
     isSet: false,
     option: 'date', // title | date
-    direction: 'desc' // desc | ask
+    direction: 'desc' // desc | asc
   }
 
   searchQuery: string = '';

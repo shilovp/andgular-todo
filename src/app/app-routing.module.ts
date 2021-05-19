@@ -5,6 +5,8 @@ import { TodoListComponent } from './todo-list/todo-list.component';
 import { AngularFireAuthGuard, redirectUnauthorizedTo, redirectLoggedInTo } from '@angular/fire/auth-guard';
 import { RegisterComponent } from './register/register.component';
 
+// I am using auth guards from firebase in that demo, but for sure they can be customs here
+
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 const redirectLoggedInToTodoList = () => redirectLoggedInTo(['todolist']);
 

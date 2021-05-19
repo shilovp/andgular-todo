@@ -2,7 +2,6 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthGuard } from '@angular/fire/auth-guard';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgxsModule } from '@ngxs/store';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,8 +11,6 @@ import { RegisterComponent } from './register/register.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AuthState } from './shared/state/user.state';
-import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
 
 const firebaseConfig = {
   apiKey: "AIzaSyB0XGJRmHfhQgMBENMchB09vTeAOQu8VW8",
@@ -22,7 +19,7 @@ const firebaseConfig = {
   storageBucket: "after-swipe-demo.appspot.com",
   messagingSenderId: "87728755491",
   appId: "1:87728755491:web:b4cb26c65f8374c950b296"
-};
+}; // configuration I would place under environment prod/dev, for demo leaved here
 
 @NgModule({
   declarations: [
@@ -35,10 +32,6 @@ const firebaseConfig = {
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    NgxsModule.forRoot([AuthState]),
-    NgxsStoragePluginModule.forRoot({
-      key: 'auth.username'
-    }),
     AngularFireModule.initializeApp(firebaseConfig),
     BrowserAnimationsModule,
     FormsModule, ReactiveFormsModule
