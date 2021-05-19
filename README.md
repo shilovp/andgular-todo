@@ -72,7 +72,7 @@ Use search to find your todo by the name. `now it requires full todo name`, this
 
 ## DEMO
 
-You can see live demo [HERE](https://github.com/shilovp/andgular-todo.git) . 
+You can see live demo [HERE](https://todo-test-viveo.firebaseapp.com) . 
 
 Demo is hosted with Firebase. 
 
